@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Pet } from "./models/Pet";
+import "./index.css";
 export interface IProps {
   name: string;
 }
 
 function Hello({ name }: IProps) {
+  const [inputVal, setInputVal] = useState("10");
   const tiger: Pet = { name: "Tiger", type: "cat", age: 2, breed: ["dsh", "tabbie"] };
   const lucky: Pet = { name: "Lucky", type: "cat", age: 2, breed: ["dsh", "ginger"] };
 
@@ -24,7 +26,8 @@ function Hello({ name }: IProps) {
 
   return (
     <h1>
-      Hello {name} <button onClick={() => logTiger(att)}>Tiger age</button> <input type="number" onClick={highlight} value="10" />
+      Hello {name} <button onClick={() => logTiger(att)}>Tiger age</button>{" "}
+      <input type="number" onClick={highlight} onChange={(e) => setInputVal(e.target.value)} value={inputVal} />
     </h1>
   );
 }
